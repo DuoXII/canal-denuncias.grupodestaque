@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canal de Denúncia - Grupo Destaque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-shield-alt header-icon"></i>
+                <h1>Canal de Denúncia</h1>
+                <p class="header-subtitle">Grupo Destaque</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>Denúncia Anônima</h2>
+                    <p class="form-description">
+                        Este Canal de Denúncia tem como objetivo de forma anônima denunciar possíveis 
+                        atitudes irregulares, fraudes e abusos acometidos por colaboradores do grupo.
+                    </p>
+                    <div class="privacy-notice">
+                        <i class="fas fa-lock"></i>
+                        <span>Sua denúncia é completamente anônima e confidencial</span>
+                    </div>
+                </div>
+
+                <form id="denunciaForm" class="denuncia-form" method="POST" action="/enviar-denuncia">
+                    <div class="form-group">
+                        <label for="loja" class="form-label">
+                            Qual sua Loja e Cidade? <span class="required">*</span>
+                        </label>
+                        <div class="select-wrapper">
+                            <select id="loja" name="loja" class="form-select" required>
+                                <option value="">Selecione uma loja...</option>
+                                <optgroup label="BYD">
+                                    <option value="BYD - ATIBAIA">BYD - ATIBAIA</option>
+                                    <option value="BYD - MOGI">BYD - MOGI</option>
+                                </optgroup>
+                                <optgroup label="CHERY">
+                                    <option value="CHERY - ATIBAIA">CHERY - ATIBAIA</option>
+                                    <option value="CHERY - BRAGANÇA">CHERY - BRAGANÇA</option>
+                                    <option value="CHERY - POA">CHERY - POA</option>
+                                </optgroup>
+                                <optgroup label="CITROEN">
+                                    <option value="CITROEN - ATIBAIA">CITROEN - ATIBAIA</option>
+                                    <option value="CITROEN - CARAGUA">CITROEN - CARAGUA</option>
+                                </optgroup>
+                                <optgroup label="FIAT">
+                                    <option value="FIAT - CARAGUA">FIAT - CARAGUA</option>
+                                    <option value="FIAT - ITAIM">FIAT - ITAIM</option>
+                                    <option value="FIAT - JACAREI">FIAT - JACAREI</option>
+                                    <option value="FIAT - MOGI">FIAT - MOGI</option>
+                                    <option value="FIAT - POA">FIAT - POA</option>
+                                    <option value="FIAT - SUZANO">FIAT - SUZANO</option>
+                                </optgroup>
+                                <optgroup label="FORD">
+                                    <option value="FORD - ATIBAIA">FORD - ATIBAIA</option>
+                                    <option value="FORD - MOGI">FORD - MOGI</option>
+                                </optgroup>
+                                <optgroup label="HYUNDAI">
+                                    <option value="HYUNDAI - ATIBAIA">HYUNDAI - ATIBAIA</option>
+                                    <option value="HYUNDAI - BRAGANÇA">HYUNDAI - BRAGANÇA</option>
+                                    <option value="HYUNDAI - CARAGUA">HYUNDAI - CARAGUA</option>
+                                </optgroup>
+                                <optgroup label="JEEP">
+                                    <option value="JEEP - ARUJA">JEEP - ARUJA</option>
+                                    <option value="JEEP - ITAIM">JEEP - ITAIM</option>
+                                    <option value="JEEP - MOGI">JEEP - MOGI</option>
+                                    <option value="JEEP - POA">JEEP - POA</option>
+                                    <option value="JEEP - SANTO ANDRE">JEEP - SANTO ANDRE</option>
+                                </optgroup>
+                                <optgroup label="NISSAN">
+                                    <option value="NISSAN - CARAGUA">NISSAN - CARAGUA</option>
+                                    <option value="NISSAN - MOGI">NISSAN - MOGI</option>
+                                    <option value="NISSAN - POA">NISSAN - POA</option>
+                                </optgroup>
+                                <optgroup label="PEUGEOT">
+                                    <option value="PEUGEOT - ATIBAIA">PEUGEOT - ATIBAIA</option>
+                                    <option value="PEUGEOT - CARAGUA">PEUGEOT - CARAGUA</option>
+                                </optgroup>
+                                <optgroup label="RAM">
+                                    <option value="RAM - MOGI">RAM - MOGI</option>
+                                </optgroup>
+                                <optgroup label="RENAULT">
+                                    <option value="RENAULT - MOGI">RENAULT - MOGI</option>
+                                    <option value="RENAULT - POA">RENAULT - POA</option>
+                                </optgroup>
+                                <optgroup label="TOYOTA">
+                                    <option value="TOYOTA - CAMPINAS">TOYOTA - CAMPINAS</option>
+                                    <option value="TOYOTA - VALINHOS">TOYOTA - VALINHOS</option>
+                                </optgroup>
+                                <option value="outro">Outro</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                        <div id="outroLojaGroup" class="form-group outro-input" style="display: none;">
+                            <label for="outroLoja" class="form-label">Especifique a loja:</label>
+                            <input type="text" id="outroLoja" name="outroLoja" class="form-input" placeholder="Digite o nome da loja e cidade">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suspeita" class="form-label">
+                            Conte sobre sua suspeita... <span class="required">*</span>
+                        </label>
+                        <textarea 
+                            id="suspeita" 
+                            name="suspeita" 
+                            class="form-textarea" 
+                            rows="8" 
+                            required
+                            placeholder="Descreva detalhadamente a situação que você gostaria de denunciar. Inclua informações como: data, local, pessoas envolvidas, e qualquer outro detalhe relevante que possa ajudar na investigação."
+                        ></textarea>
+                        <div class="char-counter">
+                            <span id="charCount">0</span> caracteres
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="arquivos" class="form-label">
+                            Anexar Arquivos (Opcional)
+                        </label>
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-content">
+                                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                <h3>Arraste arquivos aqui ou clique para selecionar</h3>
+                                <p>Suporte para: Fotos (JPG, PNG), PDFs, Documentos (DOC, DOCX), Vídeos (MP4, AVI)</p>
+                                <p class="upload-limit">Máximo: 5 arquivos, 10MB cada</p>
+                            </div>
+                            <input type="file" id="arquivos" name="arquivos" multiple accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.mp4,.avi,.mov,.wmv" style="display: none;">
+                        </div>
+                        <div id="fileList" class="file-list"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Denúncia
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Anonimato Garantido</h3>
+                    <p>Sua identidade será mantida em total sigilo. Não coletamos dados pessoais.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Resposta Rápida</h3>
+                    <p>Todas as denúncias são analisadas e investigadas com a máxima urgência.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Ética e Transparência</h3>
+                    <p>Promovemos um ambiente de trabalho ético e transparente para todos.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Grupo Destaque. Todos os direitos reservados.</p>
+                <a href="/privacidade" class="footer-link">Política de Privacidade</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+

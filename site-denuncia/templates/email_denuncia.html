@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Denúncia - Canal de Denúncia Grupo Destaque</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #1a365d;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #1a365d;
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            color: #666;
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+        .alert {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #856404;
+        }
+        .info-section {
+            margin-bottom: 25px;
+        }
+        .info-section h3 {
+            color: #1a365d;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .info-item {
+            margin-bottom: 15px;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #4a5568;
+            display: inline-block;
+            min-width: 120px;
+        }
+        .info-value {
+            color: #2d3748;
+        }
+        .protocol {
+            background: #e6fffa;
+            border: 2px solid #81e6d9;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .protocol-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #234e52;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+        .description-box {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+            font-family: inherit;
+        }
+        .attachments {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+        .attachment-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #e0f2fe;
+        }
+        .attachment-icon {
+            margin-right: 10px;
+            color: #0369a1;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        .priority {
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 12px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Nova Denúncia Recebida</h1>
+            <p>Canal de Denúncia - Grupo Destaque</p>
+        </div>
+
+        <div class="alert">
+            <strong>⚠️ CONFIDENCIAL:</strong> Esta denúncia é anônima e deve ser tratada com máxima confidencialidade.
+        </div>
+
+        <div class="protocol">
+            <div>Número do Protocolo:</div>
+            <div class="protocol-number">{{ protocolo }}</div>
+        </div>
+
+        <div class="info-section">
+            <h3>📍 Informações da Denúncia</h3>
+            
+            <div class="info-item">
+                <span class="info-label">Loja/Unidade:</span>
+                <span class="info-value">{{ loja }}</span>
+            </div>
+            
+            <div class="info-item">
+                <span class="info-label">Data/Hora:</span>
+                <span class="info-value">{{ data_envio }}</span>
+            </div>
+            
+            <div class="info-item">
+                <span class="info-label">Status:</span>
+                <span class="info-value">Pendente de Análise</span>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>📝 Descrição da Denúncia</h3>
+            <div class="description-box">{{ suspeita }}</div>
+        </div>
+
+        {% if anexos %}
+        <div class="info-section">
+            <h3>📎 Arquivos Anexados</h3>
+            <div class="attachments">
+                {% for anexo in anexos %}
+                <div class="attachment-item">
+                    <span class="attachment-icon">📄</span>
+                    <span>{{ anexo.nome }} ({{ anexo.tamanho }})</span>
+                </div>
+                {% endfor %}
+            </div>
+            <p style="font-size: 12px; color: #666; margin-top: 10px;">
+                <em>Os arquivos anexados estão inclusos neste e-mail para análise.</em>
+            </p>
+        </div>
+        {% endif %}
+
+        <div class="info-section">
+            <h3>⚡ Próximos Passos</h3>
+            <ol style="color: #4a5568;">
+                <li><strong>Análise Inicial:</strong> Revisar a denúncia em até 48 horas</li>
+                <li><strong>Investigação:</strong> Iniciar processo investigativo se necessário</li>
+                <li><strong>Ações Corretivas:</strong> Implementar medidas apropriadas</li>
+                <li><strong>Documentação:</strong> Registrar todas as ações tomadas</li>
+            </ol>
+        </div>
+
+        <div class="alert priority">
+            <strong>🔒 IMPORTANTE:</strong> Esta denúncia é completamente anônima. Não há como identificar o denunciante. Mantenha a confidencialidade durante todo o processo de investigação.
+        </div>
+
+        <div class="footer">
+            <p>Este e-mail foi gerado automaticamente pelo Sistema de Denúncias do Grupo Destaque.</p>
+            <p class="timestamp">Enviado em: {{ data_envio }}</p>
+            <p>© 2024 Grupo Destaque - Canal de Denúncia Anônima</p>
+        </div>
+    </div>
+</body>
+</html>
+

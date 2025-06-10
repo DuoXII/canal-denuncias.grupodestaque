@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denúncia Enviada - Canal de Denúncia Grupo Destaque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-check-circle header-icon" style="color: #38a169;"></i>
+                <h1>Denúncia Enviada</h1>
+                <p class="header-subtitle">Grupo Destaque</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="form-card">
+                <div class="confirmation-content">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    
+                    <h2>Denúncia Recebida com Sucesso!</h2>
+                    
+                    <div class="protocol-info">
+                        <h3>Número do Protocolo:</h3>
+                        <div class="protocol-number">{{ protocolo }}</div>
+                        <p class="protocol-note">
+                            Guarde este número para futuras consultas sobre o andamento da sua denúncia.
+                        </p>
+                    </div>
+
+                    <div class="next-steps">
+                        <h3>Próximos Passos:</h3>
+                        <div class="steps-list">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Análise Inicial</h4>
+                                    <p>Sua denúncia será analisada pela equipe responsável em até 48 horas.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>Investigação</h4>
+                                    <p>Se necessário, será iniciado um processo de investigação detalhada.</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Ações Corretivas</h4>
+                                    <p>Medidas apropriadas serão tomadas com base nos resultados da investigação.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="important-info">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <h4>Informações Importantes:</h4>
+                            <ul>
+                                <li>Sua identidade permanece completamente anônima</li>
+                                <li>Não é possível rastrear esta denúncia até você</li>
+                                <li>Todas as informações são tratadas com máxima confidencialidade</li>
+                                <li>O processo de investigação pode levar de 5 a 15 dias úteis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <a href="/" class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Nova Denúncia
+                        </a>
+                        <button onclick="window.print()" class="btn-secondary">
+                            <i class="fas fa-print"></i>
+                            Imprimir Protocolo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Grupo Destaque. Todos os direitos reservados.</p>
+                <a href="/privacidade" class="footer-link">Política de Privacidade</a>
+            </div>
+        </footer>
+    </div>
+
+    <style>
+        .confirmation-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #38a169;
+            margin-bottom: 20px;
+        }
+
+        .confirmation-content h2 {
+            font-size: 2rem;
+            color: #1a365d;
+            margin-bottom: 30px;
+        }
+
+        .protocol-info {
+            background: #f0fff4;
+            border: 2px solid #9ae6b4;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .protocol-info h3 {
+            color: #234e52;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .protocol-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #38a169;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #9ae6b4;
+        }
+
+        .protocol-note {
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .next-steps {
+            text-align: left;
+            margin: 40px 0;
+        }
+
+        .next-steps h3 {
+            text-align: center;
+            color: #1a365d;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 12px;
+            border-left: 4px solid #3182ce;
+        }
+
+        .step-number {
+            background: #3182ce;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: #1a365d;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            color: #4a5568;
+            margin: 0;
+        }
+
+        .important-info {
+            background: #fffaf0;
+            border: 1px solid #fbd38d;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .important-info i {
+            color: #dd6b20;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .important-info h4 {
+            color: #744210;
+            margin-bottom: 10px;
+        }
+
+        .important-info ul {
+            color: #744210;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .important-info li {
+            margin-bottom: 5px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+            color: white;
+            box-shadow: 0 10px 25px rgba(49, 130, 206, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(49, 130, 206, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #3182ce;
+            border: 2px solid #3182ce;
+        }
+
+        .btn-secondary:hover {
+            background: #3182ce;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .confirmation-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .protocol-number {
+                font-size: 1.5rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            .protocol-info,
+            .protocol-info * {
+                visibility: visible;
+            }
+            
+            .protocol-info {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white !important;
+                border: 2px solid #000 !important;
+            }
+        }
+    </style>
+</body>
+</html>
+
